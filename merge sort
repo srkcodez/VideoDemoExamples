@@ -1,0 +1,53 @@
+#logic for insertion sort
+def Merge_sort(a):
+    if len(a) > 1:
+
+         # Finding the mid of the array
+        mid = len(a)//2
+
+        # Dividing the array elements
+        L = a[:mid]
+
+        # into 2 halves
+        R = a[mid:]
+
+        # Sorting the first half
+        Merge_sort(L)
+
+        # Sorting the second half
+        Merge_sort(R)
+
+        i = j = k = 0
+
+        # Copy data to temp arrays L[] and R[]
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                a[k] = L[i]
+                i += 1
+            else:
+                a[k] = R[j]
+                j += 1
+            k += 1
+
+        # Checking if any element was left
+        while i < len(L):
+            a[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            a[k] = R[j]
+            j += 1
+            k += 1
+
+
+
+
+
+a = []
+n = int(input())
+for i in range(0, n):
+    a.append(int(input()))
+Merge_sort(a)
+for i in range(0,n):
+    print(a[i])
